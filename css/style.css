@@ -220,7 +220,7 @@ a {
     overflow: hidden;
 }
 
-.hero::before {
+/* .hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -231,7 +231,7 @@ a {
         radial-gradient(circle at 20% 50%, rgba(139, 38, 53, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(26, 54, 93, 0.05) 0%, transparent 50%);
     pointer-events: none;
-}
+} */
 
 .hero-content {
     display: grid;
@@ -308,11 +308,11 @@ a {
     object-fit: cover;
 }
 
-.book-cover-wrapper:hover .book-cover-webp {
+/* .book-cover-wrapper:hover .book-cover-webp {
     transform: translateY(-10px) scale(1.02);
-}
+} */
 
-.book-cover-shadow {
+/* .book-cover-shadow {
     position: absolute;
     bottom: -30px;
     left: 10%;
@@ -320,7 +320,7 @@ a {
     height: 30px;
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
     filter: blur(10px);
-}
+} */
 
 .scroll-indicator {
     position: absolute;
@@ -411,34 +411,6 @@ a {
 
 .about-text p {
     margin-bottom: 20px;
-}
-
-.highlight-box {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--white);
-    padding: 40px;
-    border-radius: var(--border-radius);
-    margin: 40px 0;
-    box-shadow: 0 10px 30px rgba(139, 38, 53, 0.3);
-}
-
-.highlight-box h3 {
-    color: var(--white);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.highlight-box h3 i {
-    color: var(--accent-gold);
-}
-
-.highlight-box p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 0;
 }
 
 .book-details {

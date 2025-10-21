@@ -170,16 +170,16 @@ function initBackToTop() {
 // Дополнительные эффекты
 // ================================
 
-// Параллакс эффект для hero секции
-window.addEventListener('scroll', function() {
-    const hero = document.querySelector('.hero');
-    const scrolled = window.scrollY;
-    
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-    }
-});
+// Параллакс эффект для hero секции удален по запросу
+// window.addEventListener('scroll', function() {
+//     const hero = document.querySelector('.hero');
+//     const scrolled = window.scrollY;
+//     
+//     if (hero && scrolled < window.innerHeight) {
+//         hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+//         hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+//     }
+// });
 
 // Эффект наведения на карточки отзывов
 const reviewCards = document.querySelectorAll('.review-card');
