@@ -365,6 +365,89 @@ stars.forEach(star => {
 });
 
 // ================================
+// Обработка видео иконок
+// ================================
+
+// Храним маппинг ссылок в памяти
+let videoLinksMapping = {};
+
+// Загружаем маппинг ссылок из JSON файла
+function loadVideoLinksMapping() {
+    fetch('vk-video-links-mapping.json')
+        .then(response => response.json())
+        .then(data => {
+            videoLinksMapping = data;
+            console.log('Маппинг видео ссылок загружен');
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки маппинга видео ссылок:', error);
+        });
+}
+
+function initVideoIcons() {
+    // Загружаем маппинг ссылок
+    loadVideoLinksMapping();
+    
+    // Добавляем обработчики событий для всех видео иконок
+    const videoIcons = document.querySelectorAll('.video-icon');
+    
+    videoIcons.forEach(icon => {
+        // Обработчик клика
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Получаем URL видео из data атрибута
+            const videoKey = this.getAttribute('data-video');
+            
+            // Получаем реальный URL видео из маппинга
+            const realVideoUrl = videoLinksMapping[videoKey] || videoKey;
+            
+            // Проверяем, что URL существует
+            if (realVideoUrl && realVideoUrl !== '#') {
+                // Открываем видео в новой вкладке
+                window.open(realVideoUrl, '_blank');
+            } else {
+                console.warn('URL видео не найден для этой иконки');
+            }
+        });
+        
+        // Добавляем поддержку клавиатуры
+        icon.addEventListener('keydown', function(e) {
+            // Открываем видео при нажатии Enter или Space
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+        
+        // Добавляем визуальную обратную связь при наведении
+        icon.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+        
+        // Добавляем фокус-эффекты для доступности
+        icon.addEventListener('focus', function() {
+            this.style.outline = '2px solid var(--accent-gold)';
+            this.style.outlineOffset = '2px';
+        });
+        
+        icon.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+    });
+}
+
+// Инициализируем видео иконки после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    initVideoIcons();
+});
+
+// ================================
 // Консольное приветствие
 // ================================
 

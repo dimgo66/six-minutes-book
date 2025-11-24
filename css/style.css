@@ -552,6 +552,54 @@ a {
     font-weight: 600;
 }
 
+/* Видео иконки для рассказов */
+.contents-list li {
+    position: relative;
+    padding-right: 40px;
+}
+
+.video-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.video-icon:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 3px 10px rgba(139, 38, 53, 0.3);
+}
+
+.contents-list li:hover .video-icon {
+    opacity: 1;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .contents-list li {
+        padding-right: 35px;
+    }
+    
+    .video-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+    }
+}
+
 .author-works,
 .author-achievements {
     background-color: var(--bg-cream);
