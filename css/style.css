@@ -301,16 +301,122 @@ a {
     width: 100%;
     height: 100%;
     border-radius: var(--border-radius);
-    box-shadow: 
+    box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     object-fit: cover;
 }
 
-/* .book-cover-wrapper:hover .book-cover-webp {
+/* Видео в Hero-секции */
+.video-wrapper video {
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.video-wrapper video:hover {
     transform: translateY(-10px) scale(1.02);
-} */
+}
+
+/* Контейнер кнопок управления */
+.video-controls {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* Кнопка play/pause */
+.video-play-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(139, 38, 53, 0.9);
+    border: 2px solid var(--accent-gold);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.video-play-toggle:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-color);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.video-play-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Кнопка включения/выключения звука */
+.video-mute-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(139, 38, 53, 0.9);
+    border: 2px solid var(--accent-gold);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.video-mute-toggle:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-color);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.video-mute-toggle:active {
+    transform: scale(0.95);
+}
+
+.video-mute-toggle.unmuted {
+    background-color: var(--accent-gold);
+    color: var(--primary-color);
+}
+
+/* Оверлей с большой кнопкой play */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.video-overlay.visible {
+    opacity: 1;
+}
+
+.video-overlay i {
+    font-size: 80px;
+    color: var(--white);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
 
 /* .book-cover-shadow {
     position: absolute;

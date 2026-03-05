@@ -445,7 +445,87 @@ function initVideoIcons() {
 // Инициализируем видео иконки после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     initVideoIcons();
+    initHeroVideo();
 });
+
+// ================================
+// Управление видео в Hero-секции
+// ================================
+
+function initHeroVideo() {
+    const video = document.getElementById('heroVideo');
+    const playToggle = document.getElementById('videoPlayToggle');
+    const muteToggle = document.getElementById('videoMuteToggle');
+    const overlay = document.getElementById('videoOverlay');
+    const playIcon = playToggle.querySelector('i');
+    const muteIcon = muteToggle.querySelector('i');
+
+    if (!video || !playToggle || !muteToggle) return;
+
+    // Клик по кнопке play/pause
+    playToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleVideoPlay();
+    });
+
+    // Клик по кнопке звука
+    muteToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleVideoSound();
+    });
+
+    // Клик по видео — пауза/плей
+    video.addEventListener('click', function() {
+        toggleVideoPlay();
+    });
+
+    // Клик по оверлею
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            toggleVideoPlay();
+        });
+    }
+
+    // Показывать оверлей когда видео на паузе
+    video.addEventListener('pause', function() {
+        if (overlay) overlay.classList.add('visible');
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+        playToggle.setAttribute('title', 'Воспроизвести');
+    });
+
+    // Скрывать оверлей когда видео играет
+    video.addEventListener('play', function() {
+        if (overlay) overlay.classList.remove('visible');
+        playIcon.classList.remove('fa-play');
+        playIcon.classList.add('fa-pause');
+        playToggle.setAttribute('title', 'Пауза');
+    });
+
+    function toggleVideoPlay() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function toggleVideoSound() {
+        video.muted = !video.muted;
+
+        if (video.muted) {
+            muteIcon.classList.remove('fa-volume-up');
+            muteIcon.classList.add('fa-volume-mute');
+            muteToggle.classList.remove('unmuted');
+            muteToggle.setAttribute('title', 'Включить звук');
+        } else {
+            muteIcon.classList.remove('fa-volume-mute');
+            muteIcon.classList.add('fa-volume-up');
+            muteToggle.classList.add('unmuted');
+            muteToggle.setAttribute('title', 'Выключить звук');
+        }
+    }
+}
 
 // ================================
 // Консольное приветствие

@@ -64,8 +64,22 @@
                     </div>
                 </div>
                 <div class="hero-image fade-in-delay">
-                    <div class="book-cover-wrapper">
-                        <img src="images/cover.webp" alt="Обложка книги Шесть минут" class="book-cover-webp" />
+                    <div class="book-cover-wrapper video-wrapper">
+                        <video autoplay muted loop playsinline class="book-cover-webp" id="heroVideo" poster="images/cover.webp">
+                            <source src="images/6min.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                        <div class="video-controls">
+                            <button class="video-play-toggle" id="videoPlayToggle" title="Пауза">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="video-mute-toggle" id="videoMuteToggle" title="Включить звук">
+                                <i class="fas fa-volume-mute"></i>
+                            </button>
+                        </div>
+                        <div class="video-overlay" id="videoOverlay">
+                            <i class="fas fa-play"></i>
+                        </div>
                     </div>
                 </div>
             </div>
