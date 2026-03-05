@@ -286,8 +286,31 @@ a {
 
 .hero-image {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 30px;
+}
+
+.hero-description {
+    max-width: 500px;
+    text-align: left;
+}
+
+.hero-description p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.hero-description p:first-child {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+}
+
+.hero-description strong {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 .book-cover-wrapper {
@@ -698,11 +721,23 @@ a {
     .contents-list li {
         padding-right: 35px;
     }
-    
+
     .video-icon {
         width: 24px;
         height: 24px;
         font-size: 0.7rem;
+    }
+
+    .hero-description {
+        text-align: center;
+    }
+
+    .hero-description p {
+        font-size: 1rem;
+    }
+
+    .hero-description p:first-child {
+        font-size: 1.05rem;
     }
 }
 
